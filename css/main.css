@@ -1,0 +1,25 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'Noto Sans JP', sans-serif;
+	font-weight: 400;
+	box-sizing: border-box;
+}
+html{
+	font-size: 62.5%;
+
+}
+
+body{
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	background-color: #e7e8e8;
+	color: #212121;
+	user-select: none;
+}
+
+.material-symbols-outlined{
+	font-size: 1em;
+	color: #5f6368;
+}

@@ -1,0 +1,45 @@
+.pallet-wrap{
+	margin: 1.1rem 0;
+	height: 35.2rem;
+	border: 2px solid #5f6368;
+	border-radius: 0.4rem;
+	background-color: #e7e8e8;
+	overflow-y: scroll;
+}
+
+.pallet{
+	display: flex;
+	height:4.4rem;
+	border-bottom: 1px solid #5f6368;
+	background-color: #ffffff;
+}
+.pallet.selected{
+	color: #1a73e8;
+	background-color: #dae2ec;
+}
+.pallet:hover{
+	color:#ffffff;
+	background-color: #5f6368;
+}
+.pallet:last-child{
+	border-bottom: none;
+}
+
+.pallet-colorBox{
+	height: 2.4rem;
+	width: 2.4rem;
+	margin: 1rem;
+	border: 1px solid #5f6368;
+	border-radius: 0.2rem;
+}
+.selected .pallet-colorBox{
+	border: 1px solid #1a73e8;
+}
+.pallet:hover .pallet-colorBox{
+	border: 1px solid #ffffff;
+}
+.pallet-colorCode{
+	height: 3.2rem;
+	margin: 0.6rem;
+	line-height: 3.0rem;
+}

@@ -1,0 +1,80 @@
+
+.sidebar{
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100%;
+	background-color: white;
+	z-index: 9999;
+	font-size: 3.6rem;
+}
+.sidebar .icon{
+	padding: 0.4rem;
+	display: block;
+}
+.sidebar .icon:hover{
+	color: #e7e8e8;
+	background-color: #5f6368;
+}
+
+.sidebar-detail{
+	display: none;
+	width: 256px;
+
+}
+.sidebar-detail-close{
+	width: 100%;
+}
+.sidebar-detail-content{
+	margin:1.1rem auto ;
+	width: 224px;
+	font-size: 1.6rem;
+	line-height: 2.2rem;
+	color: #212121;
+}
+.sidebar-detail h2{
+	height: 4.4rem;
+	padding: 0.4rem 0.8rem;
+	display: block;
+	width: 100%;
+	font-size: 2.4rem;
+	font-weight: 700;
+	color: #212121;
+}
+.sidebar-detail-h2-icon{
+	font-size: 3.6rem;
+}
+.sidebar-detail h2.sidebar-detail-hidden{
+	color: #5f6368;
+	background-color: #e3eefc;
+}
+.sidebar-detail h2.sidebar-detail-hidden:hover{
+	color: #FFFFFF;
+	background-color: #5f6368;
+}
+
+.sidebar-detail h2.sidebar-detail-hidden + .sidebar-detail-content{
+	display: none;
+}
+.sidebar-icon{
+	display: flex;
+	/* z-index: 10000; */
+	flex-direction: column;
+}
+.sidebar-icon-items{
+	display: flex;
+	flex-direction: column;
+}
+.sidebar-icon-buttom{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	flex-grow: 1;
+}
+.sidebar-icon .disable{
+	color: #e3eefc;
+}
+.sidebar-icon .disable:hover{
+	color: #e3eefc;
+	background-color: #ffffff;
+}
