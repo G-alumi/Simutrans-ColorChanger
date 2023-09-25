@@ -44,6 +44,10 @@ function palletEvents() {
 				$("#allSelectColor").removeClass("selected");
 			}
 		})
+
+		if (srcImageData != null) {
+			drawCanvas(srcImageData);
+		}
 	}
 
 	function selectAllColor() {
@@ -52,6 +56,10 @@ function palletEvents() {
 			$(".pallet").addClass("selected");
 		} else {
 			$(".pallet").removeClass("selected");
+		}
+
+		if (srcImageData != null) {
+			drawCanvas(srcImageData);
 		}
 	}
 
@@ -65,6 +73,9 @@ function palletEvents() {
 	$("#allRemoveColor").on("click", function () {
 		$(".pallet").removeClass("selected");
 		$("#allSelectColor").removeClass("selected");
+		if (srcImageData != null) {
+			drawCanvas(srcImageData);
+		}
 	});
 
 	$(".pallet").on("click", function (e) {
