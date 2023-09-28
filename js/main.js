@@ -43,6 +43,24 @@ $(function () {
 	rangeEvents();
 	canvasEvents();
 	canvasSelectEvents();
+	
+	$(".img-save").on("click", function(){
+		if(srcImageData != null){
+			const srcW = srcImageData.width;
+			const srcH = srcImageData.height;
+			const buffer = $("<canvas></canvas>");
+			buffer.attr("width", srcW);
+			buffer.attr("height", srcH);
+			const bufferCtx = buffer.get(0).getContext("2d");
+			bufferCtx.putImageData(srcImageData, 0, 0);
+	
+			const dlAnker = $("<a></a>");
+			dlAnker.attr("href",buffer.get(0).toDataURL("image/png"));
+			dlAnker.attr("download","image.png");
+			dlAnker[0].click();
+			console.log(buffer.get(0).toDataURL("image/png"))
+		}
+	})
 
 	//画像読み込み処理
 	$(document).on("change", ".fileForm", function () {
@@ -51,21 +69,6 @@ $(function () {
 			srcImageData = imageData;
 			canvasFlg = flg;
 			drawCanvas(srcImageData);
-			$(".img-save").on("click", function(){
-				const srcW = imageData.width;
-				const srcH = imageData.height;
-				const buffer = $("<canvas></canvas>");
-				buffer.attr("width", srcW);
-				buffer.attr("height", srcH);
-				const bufferCtx = buffer.get(0).getContext("2d");
-				bufferCtx.putImageData(imageData, 0, 0);
-
-				const dlAnker = $("<a></a>");
-				dlAnker.attr("href",buffer.get(0).toDataURL("image/png"));
-				dlAnker.attr("download","image.png");
-				dlAnker[0].click();
-				console.log(buffer.get(0).toDataURL("image/png"))
-			})
 		});
 	});
 
