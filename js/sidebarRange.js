@@ -1,28 +1,28 @@
-function rangeEvents(){
+function rangeEvents() {
 
-	function rangeSelect(jqButton,event){
+	function rangeSelect(jqButton, event) {
 		$(".rangeSelect div.button").removeClass("selected");
 		$(jqButton).addClass("selected");
 	}
 
-	function changeExecute(event){
-		if(canvasFlg!=null){
+	function changeExecute(event) {
+		if (src != null) {
 			changeColor();
 		}
 	}
 
-	$(".rangeSelect div.button").on("click",function(e){
-		rangeSelect(this,e);
+	$(".rangeSelect div.button").on("click", function (e) {
+		rangeSelect(this, e);
 	});
 
-	$(".changeExecute").on("click",function(e){
+	$(".changeExecute").on("click", function (e) {
 		changeExecute(e);
 	})
 
-	$(".canvasMark").on("click",function(e){
+	$(".canvasMark").on("click", function (e) {
 		$(this).toggleClass("selected");
-		if(srcImageData!=null){
-			drawCanvas(srcImageData);
+		if (src != null) {
+			drawCanvas(src);
 		}
 	})
 }

@@ -3,7 +3,7 @@ function canvasEvents() {
 	let lastWheel = null;
 	//ホイール回転
 	function zoomCanvas(event) {
-		if (srcImageData != null) {
+		if (src != null) {
 			let now = new Date().getTime();
 			if (now - lastWheel < 10 && now != null) {
 				return;
@@ -13,21 +13,21 @@ function canvasEvents() {
 			if (moveAmount < 0) {
 				if (scale < 1) {
 					scale = 1;
-					drawCanvas(srcImageData);
+					drawCanvas(src);
 					console.log("倍率:", scale);
 				} else if (scale < 8) {
 					scale++;
-					drawCanvas(srcImageData);
+					drawCanvas(src);
 					console.log("倍率:", scale);
 				}
 			} else if (0 < moveAmount) {
 				if (1 < scale) {
 					scale--;
-					drawCanvas(srcImageData);
+					drawCanvas(src);
 					console.log("倍率:", scale);
 				} else if (scale == 1) {
 					scale = 0.5;
-					drawCanvas(srcImageData);
+					drawCanvas(src);
 					console.log("倍率:", scale);
 				}
 			}
@@ -47,7 +47,7 @@ function canvasEvents() {
 	function movemMouseOnCanvas(event) {
 		canvasMouse.x = event.pageX;
 		canvasMouse.y = event.pageY;
-		if (event.which == 2 || event.which == 3) {
+		if (event.which == 2) {
 			moveCanvas();
 		}
 		canvasLastMouse.x = canvasMouse.x;
