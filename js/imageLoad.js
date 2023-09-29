@@ -1,8 +1,5 @@
 //画像読み込み
-function imageLoad(jqForm, callback) {
-	const srcCanvas = $("<canvas></canvas>");
-	const viewCanvas = $("#canvas-main");
-	let canvasFlg
+function imageLoad(jqForm,callback) {
 
 	$(".canvas-initial").hide();
 	$(".canvas-loading").show();
@@ -13,25 +10,19 @@ function imageLoad(jqForm, callback) {
 		const srcImg = new Image();
 
 		srcImg.onload = function () {
-
-			//ダミーキャンバス新規作成
-			srcCanvas.attr("width", srcImg.width);
-			srcCanvas.attr("height", srcImg.height);
-			const srcCtx = srcCanvas.get(0).getContext("2d");
-			srcCtx.drawImage(srcImg, 0, 0);
-			//キャンバスフラグ作成
-			canvasFlg = Array(srcImg.width * srcImg.height).fill(false);
-
+			const result = new ImageSrc(srcImg,filename);
+			
 			canvasMouse = { x: $(window).width / 2, y: $(window).height / 2, which: 0 };
-			viewCanvas.offset({ left: ($(window).width() - srcImg.width * scale) / 2, top: ($(window).height() - srcImg.height * scale) / 2 });
-
+			$("canvas").offset({ left: ($(window).width() - srcImg.width * scale) / 2, top: ($(window).height() - srcImg.height * scale) / 2 });
+			drawCanvas(result);
 			$(".canvas-loading").hide();
-
-			callback(srcCtx.getImageData(0,0,srcImg.width,srcImg.height), canvasFlg);
+			callback(result);
 		}
 		srcImg.src = reader.result;
 	}
 
-	$(jqForm).parent("label").html($(jqForm).val().split("\\").reverse()[0] + $(jqForm).parent("label").html());
+	const filename = $(jqForm)[0].files[0].name;
+	$(".fileForm").siblings("span").html(filename);
+
 	reader.readAsDataURL($(jqForm)[0].files[0]);
 }

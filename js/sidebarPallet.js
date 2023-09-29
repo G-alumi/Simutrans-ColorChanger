@@ -45,8 +45,8 @@ function palletEvents() {
 			}
 		})
 
-		if (srcImageData != null) {
-			drawCanvas(srcImageData);
+		if (src != null) {
+			drawCanvas(src);
 		}
 	}
 
@@ -58,8 +58,8 @@ function palletEvents() {
 			$(".pallet").removeClass("selected");
 		}
 
-		if (srcImageData != null) {
-			drawCanvas(srcImageData);
+		if (src != null) {
+			drawCanvas(src);
 		}
 	}
 
@@ -73,8 +73,8 @@ function palletEvents() {
 	$("#allRemoveColor").on("click", function () {
 		$(".pallet").removeClass("selected");
 		$("#allSelectColor").removeClass("selected");
-		if (srcImageData != null) {
-			drawCanvas(srcImageData);
+		if (src != null) {
+			drawCanvas(src);
 		}
 	});
 

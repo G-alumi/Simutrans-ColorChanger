@@ -3,8 +3,8 @@ function canvasSelectEvents() {
 
 	//座標格納用　限界値超えないようにする
 	function setPosition(event) {
-		const srcW = srcImageData.width;
-		const srcH = srcImageData.height;
+		const srcW = src.width;
+		const srcH = src.height;
 		const currentX = Math.floor(event.offsetX / scale);
 		const currentY = Math.floor(event.offsetY / scale);
 
@@ -16,14 +16,14 @@ function canvasSelectEvents() {
 
 	//座標からフラグ作成
 	function generateSelectFlg(begin, end) {
-		let result = Array(canvasFlg.length).fill(false);
+		let result = Array(src.pixFlg.length).fill(false);
 
 		const minX = Math.min(begin.x, end.x);
 		const minY = Math.min(begin.y, end.y);
 		const maxX = Math.max(begin.x, end.x);
 		const maxY = Math.max(begin.y, end.y);
 
-		const imgW = srcImageData.width;
+		const imgW = src.width;
 
 		for (let y = minY; y < maxY; y++) {
 			const row = y * imgW;
@@ -58,27 +58,25 @@ function canvasSelectEvents() {
 	function selectEnd(event) {
 		if (begin != null) {
 			const end = setPosition(event);
-			const srcW = srcImageData.width;
-			const srcH = srcImageData.height;
 			const generateFlg = generateSelectFlg(begin, end);
 			switch (getRangeSelect()) {
 				case 0:	//新規
-					canvasFlg = generateFlg;
+					src.pixFlg = generateFlg;
 					break;
 				case 1:	//追加
-					for (let index = 0; index < canvasFlg.length; index++) {
-						canvasFlg[index] = canvasFlg[index] || generateFlg[index];
+					for (let index = 0; index < src.pixFlg.length; index++) {
+						src.pixFlg[index] = src.pixFlg[index] || generateFlg[index];
 					}
 					break;
 				case 2:	//削除
-					for (let index = 0; index < canvasFlg.length; index++) {
-						canvasFlg[index] = canvasFlg[index] && !generateFlg[index];
+					for (let index = 0; index < src.pixFlg.length; index++) {
+						src.pixFlg[index] = src.pixFlg[index] && !generateFlg[index];
 					}
 					break;
 				default:
 					break;
 			}
-			drawCanvas(srcImageData);
+			drawCanvas(src);
 		}
 		begin = null;
 	}
@@ -92,7 +90,7 @@ function canvasSelectEvents() {
 	function selectMove(event) {
 		if (begin != null) {
 			const end = setPosition(event);
-			drawCanvas(srcImageData, generateSelectFlg(begin, end));
+			drawCanvas(src, generateSelectFlg(begin, end));
 		}
 	}
 
