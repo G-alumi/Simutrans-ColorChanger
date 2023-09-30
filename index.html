@@ -17,6 +17,7 @@
 	<link rel='stylesheet' type='text/css' href='css/form.css'>
 	<link rel='stylesheet' type='text/css' href='css/pallet.css'>
 	<link rel='stylesheet' type='text/css' href='css/button.css'>
+	<link rel='stylesheet' type='text/css' href='css/RclickMenu.css'>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	<script src="js/SrcImageClass.js"></script>
@@ -30,6 +31,7 @@
 	<script src="js/sidebarRange.js"></script>
 	<script src="js/sidebar.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/RclickEvents.js"></script>
 </head>
 
 <body>
@@ -45,6 +47,17 @@
 		<canvas width="0" height="0" id="canvas-main" style="background-color: blue;"></canvas>
 		<div class="canvas-loading">
 			<span class="material-symbols-outlined">progress_activity</span>
+		</div>
+		<div class="RclickMenu-wrap">
+			<div class="RclickMenu" onclick="$('.fileForm')[0].click()">
+				開く
+			</div>
+			<div class="RclickMenu" onclick="$('.img-save')[0].click()">
+				保存
+			</div>
+			<div class="RclickMenu" onclick="$('.canvasMark')[0].click()">
+				表示を目立たせる
+			</div>
 		</div>
 	</div>
 	<div class="sidebar sidebar-icon">
