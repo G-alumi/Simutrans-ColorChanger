@@ -44,6 +44,7 @@ $(function () {
 	rangeEvents();
 	canvasEvents();
 	canvasSelectEvents();
+	RclickMenu();
 	
 	$(".img-save").on("click", function(){
 		saveImage();
