@@ -39,6 +39,7 @@ const SPcolors = [
 
 $(function () {
 	$(".canvas-loading").hide();
+	$(".help").hide();
 	sidebarEvents();
 	palletEvents();
 	rangeEvents();
