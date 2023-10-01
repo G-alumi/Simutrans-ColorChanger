@@ -18,6 +18,7 @@
 	<link rel='stylesheet' type='text/css' href='css/pallet.css'>
 	<link rel='stylesheet' type='text/css' href='css/button.css'>
 	<link rel='stylesheet' type='text/css' href='css/RclickMenu.css'>
+	<link rel='stylesheet' type='text/css' href='css/help.css'>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	<script src="js/SrcImageClass.js"></script>
@@ -70,7 +71,7 @@
 		<div class="sidebar-icon-buttom">
 			<span class="material-symbols-outlined icon disable">undo</span>
 			<span class="material-symbols-outlined icon disable">redo</span>
-			<!-- <span class="material-symbols-outlined icon">help</span> -->
+			<span class="material-symbols-outlined icon" onclick="$('.help').fadeIn(150)">help</span>
 		</div>
 	</div>
 	<div class="sidebar sidebar-detail">
@@ -109,6 +110,35 @@
 				<div class="button changeExecute">色を置き換える</div>
 			</div>
 		</div>
+	</div>
+	<div class="help">
+		<span class="material-symbols-outlined icon" onclick="$('.help').fadeOut(150)">close</span>
+		<h1>Simutrans ColorChanger</h1>
+		シムトランスアドオンの特別色を確認したり置き換えたりできます。<br>
+		Github:<a href="https://github.com/G-alumi/Simutrans-ColorChanger">https://github.com/G-alumi/Simutrans-ColorChanger</a>
+		<h2>操作方法</h2>
+		<h3>ファイル</h3>
+		開く　ファイルを開きます<br>
+		保存　今の画像を保存します。
+		<h3>パレット</h3>
+		確認したい特別色を選択して下さい。<br>
+		Shift+クリックでまとめて選択できます。<br>
+		<br>
+		全色選択　すべての色を選択します。選択されている場合、選択を解除します。<br>
+		選択解除　すべての色の選択を解除します。
+		<h3>範囲</h3>
+		範囲指定<br>
+		　新規　選択した範囲を指定範囲にします。<br>
+		　追加　選択した範囲を指定範囲に追加します。<br>
+		　削除　選択した範囲を指定範囲から削除します。<br>
+		<br>
+		表示<br>
+		　目立たせる　指定されている特別色を赤く目立たせます。<br>
+		<br>
+		色を置き換える　指定範囲の選択されている特別色を置き換えます。処理的には赤成分を1減らしています。
+
+
+
 	</div>
 </body>
 
