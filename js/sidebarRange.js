@@ -20,7 +20,7 @@ function rangeEvents() {
 
 	$(".changeExecute").on("click", function (e) {
 		changeExecute(e);
-	})
+	});
 
 	$(".canvasMark").on("click", function (e) {
 		$(this).toggleClass("selected");
@@ -28,5 +28,13 @@ function rangeEvents() {
 			src.setView();
 			drawCanvas(src);
 		}
-	})
+	});
+
+	$(".canvasCutoff").on("click", function (e) {
+		$(this).toggleClass("selected");
+		if (src != null) {
+			src.setView();
+			drawCanvas(src);
+		}
+	});
 }

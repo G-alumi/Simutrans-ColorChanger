@@ -101,6 +101,7 @@ class ImageSrc {
 	setView() {
 		const opacity = 0.5;
 		const markFlg = $(".canvasMark").hasClass("selected");
+		const cutoffFlg = $(".canvasCutoff").hasClass("selected");
 		const colorIndex = getColorIndex();
 		const src = this.#imageData;
 		const view = this.#viewData;
@@ -139,6 +140,27 @@ class ImageSrc {
 					view.data[data_i + 2] = (src.data[data_i + 2] * (1 - opacity) * pixelOpacity) + (255 * opacity);
 					view.data[data_i + 3] = (src.data[data_i + 3] * (1 - opacity)) + (255 * opacity);
 				}
+			} else if (cutoffFlg) {
+				let isCutoff = true
+				const BGPlus = [[230, 255, 255]].concat(ImageSrc.SPcolors)
+				for (let color of BGPlus) {
+					if (color[0] == src.data[data_i + 0] &&
+						color[1] == src.data[data_i + 1] &&
+						color[2] == src.data[data_i + 2]) {
+						view.data[data_i + 0] = src.data[data_i + 0];
+						view.data[data_i + 1] = src.data[data_i + 1];
+						view.data[data_i + 2] = src.data[data_i + 2];
+						view.data[data_i + 3] = src.data[data_i + 3];
+						isCutoff = false;
+						break;
+					}
+				}
+				if (isCutoff) {
+					view.data[data_i + 0] = Math.floor(Math.floor(src.data[data_i + 0] / 8) * 8.23);
+					view.data[data_i + 1] = Math.floor(Math.floor(src.data[data_i + 1] / 8) * 8.23);
+					view.data[data_i + 2] = Math.floor(Math.floor(src.data[data_i + 2] / 8) * 8.23);
+					view.data[data_i + 3] = src.data[data_i + 3];
+				}
 			} else {
 				view.data[data_i + 0] = src.data[data_i + 0];
 				view.data[data_i + 1] = src.data[data_i + 1];
@@ -147,6 +169,7 @@ class ImageSrc {
 			}
 		}
 	}
+
 
 	//imageDataの各フィールドを呼び出せるようにするためのゲッター・セッター
 	//imageDataをこのクラスで置き換えたため、width,heightもゲッターを整備
