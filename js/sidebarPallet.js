@@ -10,8 +10,10 @@ function getColorIndex() {
 }
 
 function palletEvents() {
+	let lastIndex = null;
+	
 	function generatePallet() {
-		for (let color of SPcolors) {
+		for (let color of ImageSrc.SPcolors) {
 			const html = `<div class="pallet">
 			<div class="pallet-colorBox" style="background-color: rgb(${color[0]},${color[1]},${color[2]});"></div>
 			<div class="pallet-colorCode">${color.join()}</div>
@@ -20,7 +22,7 @@ function palletEvents() {
 		}
 	}
 
-	function selectColor(event, jq, lastIndex) {
+	function selectColor(event, jq) {
 		$(jq).toggleClass("selected");
 		const index = $(".pallet").index(jq);
 
@@ -42,10 +44,12 @@ function palletEvents() {
 		$(".pallet").each(function () {
 			if (!$(this).hasClass("selected")) {
 				$("#allSelectColor").removeClass("selected");
+				return false;
 			}
 		})
 
 		if (src != null) {
+			src.setView();
 			drawCanvas(src);
 		}
 	}
@@ -59,12 +63,12 @@ function palletEvents() {
 		}
 
 		if (src != null) {
+			src.setView();
 			drawCanvas(src);
 		}
 	}
 
 	generatePallet();
-	let lastIndex = null;
 
 	$("#allSelectColor").on("click", function () {
 		selectAllColor();
@@ -74,6 +78,7 @@ function palletEvents() {
 		$(".pallet").removeClass("selected");
 		$("#allSelectColor").removeClass("selected");
 		if (src != null) {
+			src.setView();
 			drawCanvas(src);
 		}
 	});

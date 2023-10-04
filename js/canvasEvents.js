@@ -5,7 +5,7 @@ function canvasEvents() {
 	function zoomCanvas(event) {
 		if (src != null) {
 			let now = new Date().getTime();
-			if (now - lastWheel < 10 && now != null) {
+			if (now - lastWheel < 20 && now != null) {
 				return;
 			}
 			lastWheel = now;
@@ -15,7 +15,7 @@ function canvasEvents() {
 					scale = 1;
 					drawCanvas(src);
 					console.log("倍率:", scale);
-				} else if (scale < 8) {
+				} else if (scale < 10) {
 					scale++;
 					drawCanvas(src);
 					console.log("倍率:", scale);

@@ -7,7 +7,10 @@ function rangeEvents() {
 
 	function changeExecute(event) {
 		if (src != null) {
-			changeColor();
+			$(".canvas-loading").show();
+			src.set();
+			drawCanvas(src);
+			$(".canvas-loading").hide();
 		}
 	}
 
@@ -22,6 +25,7 @@ function rangeEvents() {
 	$(".canvasMark").on("click", function (e) {
 		$(this).toggleClass("selected");
 		if (src != null) {
+			src.setView();
 			drawCanvas(src);
 		}
 	})

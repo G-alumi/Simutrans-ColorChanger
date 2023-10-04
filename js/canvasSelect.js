@@ -17,7 +17,6 @@ function canvasSelectEvents() {
 	//座標からフラグ作成
 	function generateSelectFlg(begin, end) {
 		let result = Array(src.pixFlg.length).fill(false);
-
 		const minX = Math.min(begin.x, end.x);
 		const minY = Math.min(begin.y, end.y);
 		const maxX = Math.max(begin.x, end.x);
@@ -62,16 +61,20 @@ function canvasSelectEvents() {
 			switch (getRangeSelect()) {
 				case 0:	//新規
 					src.pixFlg = generateFlg;
+					console.log(src.pixFlg == generateFlg)
+					src.setView();
 					break;
 				case 1:	//追加
 					for (let index = 0; index < src.pixFlg.length; index++) {
 						src.pixFlg[index] = src.pixFlg[index] || generateFlg[index];
 					}
+					src.setView();
 					break;
 				case 2:	//削除
 					for (let index = 0; index < src.pixFlg.length; index++) {
 						src.pixFlg[index] = src.pixFlg[index] && !generateFlg[index];
 					}
+					src.setView();
 					break;
 				default:
 					break;
