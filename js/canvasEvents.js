@@ -48,6 +48,7 @@ function canvasEvents() {
 		canvasMouse.x = event.pageX;
 		canvasMouse.y = event.pageY;
 		if (event.which == 2) {
+			$(".RclickMenu-wrap").hide();
 			moveCanvas();
 		}
 		canvasLastMouse.x = canvasMouse.x;
