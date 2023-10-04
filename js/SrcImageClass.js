@@ -79,7 +79,6 @@ class ImageSrc {
 
 	//選択範囲の選択中特別色を置き換える
 	set() {
-		console.time("set");
 		let src = this.#imageData;
 		let colorIndex = getColorIndex();
 		for (let pix_i = 0; pix_i < this.pixFlg.length; pix_i++) {
@@ -96,12 +95,10 @@ class ImageSrc {
 			}
 		}
 		this.setView();
-		console.timeEnd("set");
 	}
 
 	//ビューを条件に合わせて更新
 	setView() {
-		console.time("setView");
 		const opacity = 0.5;
 		const markFlg = $(".canvasMark").hasClass("selected");
 		const colorIndex = getColorIndex();
@@ -149,7 +146,6 @@ class ImageSrc {
 				view.data[data_i + 3] = src.data[data_i + 3];
 			}
 		}
-		console.timeEnd("setView");
 	}
 
 	//imageDataの各フィールドを呼び出せるようにするためのゲッター・セッター

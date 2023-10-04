@@ -61,7 +61,6 @@ function canvasSelectEvents() {
 			switch (getRangeSelect()) {
 				case 0:	//新規
 					src.pixFlg = generateFlg;
-					console.log(src.pixFlg == generateFlg)
 					src.setView();
 					break;
 				case 1:	//追加
